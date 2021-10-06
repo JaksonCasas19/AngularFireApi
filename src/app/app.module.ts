@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DeparmentComponent } from './deparment/deparment.component';
 import { ShowDepComponent } from './deparment/show-dep/show-dep.component';
+import { AddEditDepComponent } from './deparment/add-edit-dep/add-edit-dep.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DeparmentComponent,
-    ShowDepComponent
+    ShowDepComponent,
+    AddEditDepComponent
   ],
   imports: [
     BrowserModule,
