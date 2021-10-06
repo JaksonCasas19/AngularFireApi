@@ -10,6 +10,7 @@ export class SharedService {
   readonly PhotoUrl = "http://127.0.0.1:8000/media/";
 
   constructor(private http:HttpClient) { }
+  /*Department*/
 
   //GET - Para consumir los datos del API Department
   getDepList():Observable<any[]>{
@@ -30,4 +31,25 @@ export class SharedService {
   deleteDepartment(val:any){
     return this.http.delete(this.APIUrl + '/department/', val);
   }
+
+  /*Employees*/
+  getEmpList():Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl + '/employee/');
+  }
+  //POST - Agregar
+  addEmployee(val:any){
+    return this.http.post(this.APIUrl + '/employee/', val);
+  }
+  
+  //PUT - Actualizar
+  updateEmployee(val:any){
+    return this.http.put(this.APIUrl + '/employee/', val);
+  }
+  
+  //Delete
+  deleteEmployee(val:any){
+    return this.http.delete(this.APIUrl + '/employee/', val);
+  }
+
+
 }
