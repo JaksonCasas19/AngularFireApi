@@ -51,5 +51,14 @@ export class SharedService {
     return this.http.delete(this.APIUrl + '/employee/', val);
   }
 
+  UploadPhoto(val:any){
+    return this.http.post(this.APIUrl+'/SaveFile',val);
+  }
+  
+  //Metodo para consumir todas las APIS que tenemos en el proyecto
+  getAllDepartmentNames():Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl+'/department/');
+  }
+
 
 }
