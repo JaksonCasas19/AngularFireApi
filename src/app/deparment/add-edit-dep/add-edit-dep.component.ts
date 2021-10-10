@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-add-edit-dep',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AddEditDepComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:SharedService) { }
 
   @Input() 
   dep:any;
@@ -20,7 +21,10 @@ export class AddEditDepComponent implements OnInit {
   }
 
   addDepartment(){
-
+    var val = {DepartmentId:this.DepartmentId,DepartmentName:this.DepartmentName};
+    this.service.addDepartment(val).subscribe(res =>{
+      alert(res.toString());
+    })
   }
 
   updateDepartment(){
