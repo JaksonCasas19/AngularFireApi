@@ -14,46 +14,47 @@ export class ShowEmpComponent implements OnInit {
   ModalTitle:string;
   EmployeetList:any=[];
   ActivateAddEditEmpComp:boolean=false;
-  dep:any;
+  emp:any;
 
   ngOnInit(): void {
-    this.refreshDepList();
+    this.refreshEmpList();
   }
 
   addClick(){
-    this.dep={
-      DepartmentId:0,
-      DepartmentName:""
+    this.emp={
+      EmployeeId:0,
+      EmployeeName:"",
+      Deparment:"",
+      DateOfJoining:"",
+      PhotoFileName:"android.jpg"
     }
-    this.ModalTitle="Add Department";
+    this.ModalTitle="Add Employee";
     this.ActivateAddEditEmpComp=true;
   }
 
   deleteClick(item:any){
     if(confirm('Are you sure?')){
-      this.service.deleteDepartment(item.DepartmentId).subscribe(data =>{
+      this.service.deleteDepartment(item.EmployeeId).subscribe(data =>{
         alert(data.toString());
-        this.refreshDepList();
+        this.refreshEmpList();
       });
     }
   }
 
 
   editClick(item:any){
-    this.dep=item;
-    this.ModalTitle = "Edit Department"
+    this.emp=item;
+    this.ModalTitle = "Edit Employee"
     this.ActivateAddEditEmpComp=true;
-
-    
 
   }
 
   closeClick(){
     this.ActivateAddEditEmpComp=false;
-    this.refreshDepList();
+    this.refreshEmpList();
   }
 
-  refreshDepList(){
+  refreshEmpList(){
     this.service.getDepList().subscribe(data=>{
       this.EmployeetList=data;
     });
