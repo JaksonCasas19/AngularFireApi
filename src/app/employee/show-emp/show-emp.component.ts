@@ -11,8 +11,9 @@ export class ShowEmpComponent implements OnInit {
 
   constructor(private service:SharedService) { }
 
+  EmployeeList:any=[];
+
   ModalTitle:string;
-  EmployeetList:any=[];
   ActivateAddEditEmpComp:boolean=false;
   emp:any;
 
@@ -24,29 +25,29 @@ export class ShowEmpComponent implements OnInit {
     this.emp={
       EmployeeId:0,
       EmployeeName:"",
-      Deparment:"",
+      Department:"",
       DateOfJoining:"",
-      PhotoFileName:"android.jpg"
+      PhotoFileName:"anonymous.png"
     }
     this.ModalTitle="Add Employee";
+    this.ActivateAddEditEmpComp=true;
+
+  }
+
+  editClick(item:any){
+    console.log(item);
+    this.emp=item;
+    this.ModalTitle="Edit Employee";
     this.ActivateAddEditEmpComp=true;
   }
 
   deleteClick(item:any){
-    if(confirm('Are you sure?')){
-      this.service.deleteDepartment(item.EmployeeId).subscribe(data =>{
+    if(confirm('Are you sure??')){
+      this.service.deleteEmployee(item.EmployeeId).subscribe(data=>{
         alert(data.toString());
         this.refreshEmpList();
-      });
+      })
     }
-  }
-
-
-  editClick(item:any){
-    this.emp=item;
-    this.ModalTitle = "Edit Employee"
-    this.ActivateAddEditEmpComp=true;
-
   }
 
   closeClick(){
@@ -54,9 +55,10 @@ export class ShowEmpComponent implements OnInit {
     this.refreshEmpList();
   }
 
+
   refreshEmpList(){
-    this.service.getDepList().subscribe(data=>{
-      this.EmployeetList=data;
+    this.service.getEmpList().subscribe(data=>{
+      this.EmployeeList=data;
     });
   }
 
