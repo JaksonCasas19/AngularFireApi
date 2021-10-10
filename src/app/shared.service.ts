@@ -24,12 +24,12 @@ export class SharedService {
 
   //PUT - Actualizar
   updateDepartment(val:any){
-    return this.http.put(this.APIUrl + '/department/', val);
+    return this.http.put(this.APIUrl + '/department/', val + '/');
   }
 
   //Delete
   deleteDepartment(val:any){
-    return this.http.delete(this.APIUrl + '/department/', val);
+    return this.http.delete(this.APIUrl + '/department/'+val);
   }
 
   /*Employees*/

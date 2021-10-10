@@ -18,20 +18,21 @@ export class AddEditDepComponent implements OnInit {
   ngOnInit(): void {
     this.DepartmentId = this.dep.DepartmentId;
     this.DepartmentName=this.dep.DepartmentName;
+    
   }
 
   addDepartment(){
     var val = {DepartmentId:this.DepartmentId,DepartmentName:this.DepartmentName};
-    this.service.addDepartment(val).subscribe(res =>{
-      alert(res.toString());
-    });
+    this.service.addDepartment(val).subscribe();
+    
   }
 
   updateDepartment(){
     var val = {DepartmentId:this.DepartmentId,DepartmentName:this.DepartmentName};
     this.service.updateDepartment(val).subscribe(res =>{
-      alert(res.toString());
+      alert("Se actualizo!");
     });
+    
   }
 
 }
