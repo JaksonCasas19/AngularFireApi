@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedService {
-  readonly APIUrl = "http://127.0.0.1:8000";
+  readonly APIUrl = "http://127.0.0.1:8000/api";
   readonly PhotoUrl = "http://127.0.0.1:8000/media/";
 
   constructor(private http:HttpClient) { }
@@ -54,7 +54,7 @@ export class SharedService {
   UploadPhoto(val:any){
     return this.http.post(this.APIUrl+'/SaveFile',val);
   }
-  
+
   //Metodo para consumir todas las APIS que tenemos en el proyecto
   getAllDepartmentNames():Observable<any[]>{
     return this.http.get<any[]>(this.APIUrl+'/department/');
